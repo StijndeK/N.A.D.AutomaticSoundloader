@@ -1,11 +1,17 @@
-# N.A.D.
-N.A.D. is a research project to improve the process of designing non-linear audio for games. Mockups, prototypes and experiments will serve to further investigate a tool that improves this process. 
+# N.A.D. Automatic Sound Loader
+ASL is a terminal application that allows the user to quickly test a horizontal non-linear system that doesn't require any input (doesn't adapt to game parameters). Export audio directly into the folder with specific file names and they will automatically be sequenced based on the given options.
 
-My workflow, creativity and (interdisciplinary) team communication and that of other game audio designers is obstructed in the process of designing and testing non-linear music systems for games, which can be cumbersome due to technical limitations caused by the non-linearity of video games in relation to the linearity of standard audio production software. Standard linear audio production tools offer little to none non-linear sequencing, transitioning, parameter adaption and probability functionalities. Furthermore, linear sequencers struggle to provide a visual representation of non-linear systems. These issues cause testing and prototyping to take unnecessary amounts of time and obscures communication with collaborators. This obstructs the workflow and discourages innovation. Existing standard middleware solutions focus less on tackling the obstructions in the design stage of a project. New solutions in the form of tools and methods can be developed to tackle these issues and upgrade the process of designing non-linear audio for games.
+## Application to context
+The automatic sound loader experiments have been applied to Rookery. A walking simulator type game.
+- [EXP1 video](https://streamable.com/wmomb)
+- [EXP2 video](https://streamable.com/reu4v)
 
-## Current status
+## N.A.D.
+ASL is the first experiment for my thesis about: Tools for Designing Non-Linear Audio for Games. As a game audio designer I am hindered during my creative process, due to the discrepancy between the nonlinearity of my work and the linear character of standard audio production software. Standard linear audio production tools offer little to none non-linear sequencing, transitioning, parameter adaption and probability functionalities. Furthermore, linear sequencers are not optimised to provide a visual representation of non-linear systems. Existing standard middleware solutions focus less on tackling the obstructions in the design stage of a project. These issues cause testing and prototyping to take unnecessary amounts of time and obscures communication with collaborators. This obstructs the workflow and discourages innovation. 
 
-## Application to games
-Experiments are applied to multiple projects are currently being developed. Prototypes include a link containing a video of the application of the prototype to the project:
-- [EXP1](https://streamable.com/wmomb)
-- [EXP2](https://streamable.com/reu4v)
+#### Other N.A.D. tools & experiments
+- [N.A.D Procedural Audio System](https://github.com/StijndeK/N.A.D.ProceduralAudioSystem)
+- [N.A.D Visual Parameter Adaption in Unity](https://github.com/StijndeK/N.A.D.VisualParameterAdaption)
+
+## Current status and improvements
+This project tackles the issue of the amount of time and disturbance in workflow caused by the time it takes from creating audio to actually being able to hear and test it in its non-linear system. Quick testing by directly bouncing the audio with the specific file names saves time and tackles the disruption in workflow. As a test to see if this type of system would work, the project has succeeded. However, the functionalities are still very limited and file names do need to be named specifically, which can take some time to get used to. Improvements such as parameter adaption and visualisation are tackled in [N.A.D Procedural Audio System](https://github.com/StijndeK/N.A.D.ProceduralAudioSystem) and [N.A.D Visual Parameter Adaption in Unity](https://github.com/StijndeK/N.A.D.VisualParameterAdaption).
