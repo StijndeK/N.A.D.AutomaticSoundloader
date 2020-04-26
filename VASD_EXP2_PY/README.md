@@ -18,12 +18,3 @@ The amount of loops and the amount of layers are limited to 9 files (1 to 9).
 For example:
 1_1_NameAndOtherInformation_124.wav
 is the first track on the first layer and can loop or transition to track 2 or 4
-
-## Reflection
-| Improvements    | Drawback       | Missing  |
-| ------------- |:-------------:| -----:|
-| Tail playback | Even more specific file naming | Transition techniques |
-| Vertical layering | Requires more user input | Adaption to game parameters |
-| | | Added context, both visual and interactive |
-| | | Clear overview |
-| | | Chance percentages |
