@@ -17,13 +17,3 @@ The amount of loops is limited to 10 files (0 to 9).
 For example:
 1_NameAndOtherInformation_124.wav
 is the first track and can loop or transition to track 2 or 4
-
-## Reflection
-| Improvements    | Drawback       | Missing  |
-| ------------- |:-------------:| -----:|
-| quick testing | specific file naming | Vertical layering |
-| | Clicks in transitions | Adaption to game parameters |
-| | | Added context, both visual and interactive |
-| | | Clear overview |
-| | | Chance percentages |
-| | | Transition techniques |
