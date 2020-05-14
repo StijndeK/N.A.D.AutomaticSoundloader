@@ -2,7 +2,7 @@
 ASL is a prototype terminal application that allows the user to quickly test a horizontal nonlinear system. Export audio directly into the folder with specific file names and they will automatically be sequenced based on the given possibilities. 
 
 ## Application to context
-[This video](https://streamable.com/reu4v) shows this experiment demonstrated on a early musical concept for Rookery, a game currently being developed.
+[This video](https://streamable.com/w8x043) shows this experiment demonstrated on a early musical concept for Rookery, a game currently being developed.
 
 ## NADT
 Procedural Audio System (working title) is the third experiment in a range of experiments meant to adress obstructions in the process of designing and prototyping nonlinear audiosystems. [Click here](http://sdkoning.com/PF/N.A.D.T..html) for more information on the project.
