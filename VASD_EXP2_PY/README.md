@@ -1,5 +1,5 @@
 # EXP2
-The second VASD prototype. EXP2 builds further on [EXP1](https://github.com/StijndeK/VASD/tree/master/VASD_EXP1_PY). Added features are vertical layering and allowing audiotails.
+The second VASD prototype. EXP2 builds further on EXP1. Added features are vertical layering and allowing audiotails.
 
 ## Example
 Applied to Rookery
