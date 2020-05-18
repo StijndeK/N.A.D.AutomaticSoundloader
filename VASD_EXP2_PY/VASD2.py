@@ -6,12 +6,23 @@ import sys, select
 import time
 import glob
 
-names = [] # to contain all wav files
-entryList = [] # all different audio files
+names = []
 currentTrack = []
-currentTransitionOptions = [] # current options for every layer to transition to 
+currentTransitionOptions = []
 loopDuration = 0
 currentTransitionValue = "1"
+layers = []
+
+# CLASSES
+class LayerVariation():
+    def __init__(self, filename, loopnumber, possibleTransitions):
+        self.filename = filename
+        self.loopnumber = loopnumber
+        self.possibleTransitions = possibleTransitions
+class Layer():
+    def __init__(self, layer, layerVariations):
+        self.layer = layer
+        self.layerVariations = layerVariations
 
 # FUNCTIONS
 def playTrack(name):
@@ -35,23 +46,27 @@ def play():
     print ("Press return to stop audio")
     while True:
         global currentTransitionValue
-        for layerEntryList in entryList:
-            # set the number of the current layer
-            currentEntryNumber = int(layerEntryList[0][3]) - 1
+        for layer in layers:
+            # current layer
+            currentEntryNumber = layer.layer
+
             # set what variation to play if options are initialised
             if currentTransitionOptions[currentEntryNumber]: 
                 currentTransitionValue = currentTransitionOptions[currentEntryNumber][random.randint(1, len(currentTransitionOptions[currentEntryNumber])) - 1]
+
             # find track to play
-            for entry in layerEntryList:
-                if int(entry[1]) == int(currentTransitionValue):
-                    currentTrack = entry
+            for layerVar in layer.layerVariations:
+                if int(layerVar.loopnumber) == int(currentTransitionValue):
+                    currentTrack = layerVar
                     break
+
             # set new transition options
-            currentTransitionOptions[currentEntryNumber] = currentTrack[2]
-            # play track
-            playTrack(currentTrack[0])
-        # wait till tracks have finished playing
+            currentTransitionOptions[currentEntryNumber] = currentTrack.possibleTransitions
+
+            playTrack(currentTrack.filename)
+
         time.sleep(loopDuration)
+
         # check if return is pressed        
         i,o,e = select.select([sys.stdin],[],[],0.0001)
         if i == [sys.stdin]: 
@@ -59,33 +74,42 @@ def play():
 
 # LOAD AND PARSE FILES
 print ("Welcome!")
-print("Loaded audio loops:")
-for root, dirs, files in os.walk("."):
+currentLayerNumber = -1
+for root, dirs, files in os.walk("./Bounces/"):
+    if root != "./Bounces/":
+        layers.append(Layer(int(root[-1]) - 1, []))
+        currentLayerNumber = currentLayerNumber + 1
+        currentTransitionOptions.append([])
     for filename in files:
         if filename.endswith('.wav'): 
-            print(" - " + filename)
-            # convert tot 16 bit to make sure audio is playable and copy the audio so the source files are safe
-            data, samplerate = soundfile.read(filename)
-            newName = "".join(("new_", filename))
-            soundfile.write(newName, data, samplerate, subtype='PCM_16')
-            names.append(newName)
-            # set all entrys in list
-            possibleTransitions = []
-            tempName = newName[:-4] # remove wav extension
             # set possible transitions
+            possibleTransitions = []
+            tempName = filename[:-4] # remove wav extension
             while True:
                 possibleTransition = tempName[-1]
                 if possibleTransition != "_":
-                    possibleTransitions.append(possibleTransition)
+                    possibleTransitions.append(int(possibleTransition))
                     tempName = tempName[:-1]
                 else:
                     break
-            # init lists
-            while len(entryList) < int(newName[6]):
-                entryList.append([])
-                currentTransitionOptions.append([])
-            # add entry
-            entryList[int(newName[6]) - 1].append([newName, newName[4], possibleTransitions , newName[6]]) # layer [filename, loopnumber, [transition possibilities], vertical layer number]
+
+            # convert tot 16 bit to make sure audio is playable and copy the audio so the source files are safe
+            data, samplerate = soundfile.read(root + "/" + filename)
+            newName = root + "/" + "new_" + filename
+            names.append(newName)
+            soundfile.write(newName, data, samplerate, subtype='PCM_16')
+
+            # set layer data
+            layers[currentLayerNumber].layerVariations.append(LayerVariation(newName, filename[0], possibleTransitions))
+
+
+
+print("Audio loaded: ")
+for layer in layers:
+    for layerVar in layer.layerVariations:
+        print(layerVar.filename)
+
+playTrack(layers[0].layerVariations[0].filename)
 
 # LOOP
 loopDuration = calculateTime()
@@ -106,4 +130,3 @@ while True:
 # EXIT
 for name in names:
     os.remove(name)
-
