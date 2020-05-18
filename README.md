@@ -1,5 +1,5 @@
 # N.A.D. Automatic Sound Loader
-ASL is a prototype terminal application that allows the user to quickly test a horizontal nonlinear system. Export audio directly into the folder with specific file names and they will automatically be sequenced based on the given possibilities. 
+ASL is a prototype terminal application that allows the user to quickly test a horizontal nonlinear system. Export audio directly into specifically named folders with specificallynamed files and they will automatically be sequenced based on the given possibilities. 
 
 ## Application to context
 [This video](https://streamable.com/w8x043) shows this experiment demonstrated on a early musical concept for Rookery, a game currently being developed.
