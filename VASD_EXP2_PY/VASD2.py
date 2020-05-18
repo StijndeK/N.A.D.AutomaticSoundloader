@@ -49,17 +49,14 @@ def play():
         for layer in layers:
             # current layer
             currentEntryNumber = layer.layer
-
             # set what variation to play if options are initialised
             if currentTransitionOptions[currentEntryNumber]: 
                 currentTransitionValue = currentTransitionOptions[currentEntryNumber][random.randint(1, len(currentTransitionOptions[currentEntryNumber])) - 1]
-
             # find track to play
             for layerVar in layer.layerVariations:
                 if int(layerVar.loopnumber) == int(currentTransitionValue):
                     currentTrack = layerVar
                     break
-
             # set new transition options
             currentTransitionOptions[currentEntryNumber] = currentTrack.possibleTransitions
 
@@ -92,17 +89,13 @@ for root, dirs, files in os.walk("./Bounces/"):
                     tempName = tempName[:-1]
                 else:
                     break
-
             # convert tot 16 bit to make sure audio is playable and copy the audio so the source files are safe
             data, samplerate = soundfile.read(root + "/" + filename)
             newName = root + "/" + "new_" + filename
             names.append(newName)
             soundfile.write(newName, data, samplerate, subtype='PCM_16')
-
             # set layer data
             layers[currentLayerNumber].layerVariations.append(LayerVariation(newName, filename[0], possibleTransitions))
-
-
 
 print("Audio loaded: ")
 for layer in layers:
