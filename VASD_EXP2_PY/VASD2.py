@@ -109,8 +109,6 @@ for layer in layers:
     for layerVar in layer.layerVariations:
         print(layerVar.filename)
 
-playTrack(layers[0].layerVariations[0].filename)
-
 # LOOP
 loopDuration = calculateTime()
 
